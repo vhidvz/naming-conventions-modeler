@@ -17,21 +17,6 @@ const strings = [
   '_-$#@',
 ];
 
-const obj = {
-  _id: '123',
-  test_value: 123,
-  data: {
-    _id: '456',
-    test_value: 456,
-  },
-  items: [
-    {
-      _id: '789',
-      test_value: 789,
-    },
-  ],
-};
-
 describe('test hello function', () => {
   it('should return no case', () => {
     const noCase = convention('no case');
