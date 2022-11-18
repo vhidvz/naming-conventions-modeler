@@ -1,10 +1,5 @@
 import {
-  isCamelCase,
-  isKebabCase,
-  isMacroCase,
-  isNoCase,
-  isPascalCase,
-  isSnakeCase,
+  convention,
   toCamelCase,
   toKebabCase,
   toMacroCase,
@@ -20,46 +15,6 @@ export type NamingConvention =
   | 'kebab-case'
   | 'MACRO_CASE'
   | 'no case';
-
-export function convention(name: NamingConvention): {
-  to: (str: string) => string;
-  is: (str: string) => boolean;
-} {
-  let to: (str: string) => string;
-  let is: (str: string) => boolean;
-
-  switch (name) {
-    case 'snake_case':
-      to = toSnakeCase;
-      is = isSnakeCase;
-      break;
-    case 'camelCase':
-      to = toCamelCase;
-      is = isCamelCase;
-      break;
-    case 'PascalCase':
-      to = toPascalCase;
-      is = isPascalCase;
-      break;
-    case 'kebab-case':
-      to = toKebabCase;
-      is = isKebabCase;
-      break;
-    case 'MACRO_CASE':
-      to = toMacroCase;
-      is = isMacroCase;
-      break;
-    case 'no case':
-      to = toNoCase;
-      is = isNoCase;
-      break;
-
-    default:
-      throw new Error('Naming convention is not defined');
-  }
-
-  return { to, is };
-}
 
 const find = (
   target: { [x: string | symbol]: unknown },
@@ -110,5 +65,9 @@ const build = <T = unknown>(data: object, name: NamingConvention): T => {
 export class Modeler {
   static build<T = unknown>(data: object, name: NamingConvention): T {
     return nested(data, name) as T;
+  }
+
+  static convert(data: object) {
+    JSON.stringify(data);
   }
 }
