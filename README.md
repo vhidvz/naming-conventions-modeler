@@ -12,7 +12,7 @@
 [![documentation](https://img.shields.io/badge/documentation-click_to_read-c27cf4)](https://vhidvz.github.io/naming-conventions-modeler/)
 [![Build, Test and Publish](https://github.com/vhidvz/naming-conventions-modeler/actions/workflows/npm-ci.yml/badge.svg)](https://github.com/vhidvz/naming-conventions-modeler/actions/workflows/npm-ci.yml)
 
-Simple and Fast naming conventions modeler implemented by ```Proxy```, zero dependencies.
+Simple and Fast naming conventions modeler implemented with ```Proxy```, zero dependencies.
 
 ## Quick Start Guide
 
