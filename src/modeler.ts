@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import {
   convention,
   toCamelCase,
@@ -17,9 +18,9 @@ export type NamingConvention =
   | 'no case';
 
 const find = (
-  target: { [x: string | symbol]: unknown },
+  target: { [x: string | symbol]: any },
   prop: string | symbol,
-): { key: string | symbol; value: unknown | undefined } => {
+): { key: string | symbol; value: any | undefined } => {
   if (typeof prop === 'symbol') return { key: prop, value: target[prop] };
   if (target[prop]) return { key: prop, value: target[prop] };
 
@@ -31,23 +32,23 @@ const find = (
   return { key: '', value: undefined };
 };
 
-const nested = (data: unknown, name: NamingConvention): unknown => {
+const nested = (data: any, name: NamingConvention): any => {
   if (typeof data === 'object') {
     if (Array.isArray(data)) return data.map((val) => nested(val, name));
     else return build(data as object, name);
   } else return data;
 };
 
-const build = <T = unknown>(data: object, name: NamingConvention): T => {
+const build = <T = any>(data: object, name: NamingConvention): T => {
   const $ = convention(name);
   return new Proxy(data, {
-    set(obj: { [x: string | symbol]: unknown }, prop: string | symbol, value: unknown) {
+    set(obj: { [x: string | symbol]: any }, prop: string | symbol, value: any) {
       if (typeof prop === 'symbol') obj[prop] = value;
       else obj[$.to(prop)] = value;
       return true;
     },
     // eslint-disable-next-line @typescript-eslint/no-unused-vars
-    get(target: { [x: string | symbol]: unknown }, prop: string | symbol, receiver: unknown) {
+    get(target: { [x: string | symbol]: any }, prop: string | symbol, receiver: any) {
       const { key, value } = find(target, prop);
 
       if (typeof key === 'string' && value && !$.is(key)) {
@@ -63,7 +64,7 @@ const build = <T = unknown>(data: object, name: NamingConvention): T => {
 };
 
 export class Modeler {
-  static build<T = unknown>(data: object, name: NamingConvention): T {
+  static build<T = any>(data: object, name: NamingConvention): T {
     return nested(data, name) as T;
   }
 

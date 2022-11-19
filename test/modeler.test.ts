@@ -31,7 +31,7 @@ type camelObj = {
 };
 
 describe('test hello function', () => {
-  it('should return camelCase', () => {
+  it('getting camelCase value', () => {
     const model = Modeler.build<camelObj>(obj, 'camelCase');
 
     Modeler.convert(model); // is not necessary
@@ -48,5 +48,17 @@ describe('test hello function', () => {
         testValue: model.items[0].testValue,
       },
     ]);
+  });
+
+  it('setting camelCase value', () => {
+    const model = Modeler.build(obj, 'camelCase');
+
+    model.NO_name = 'no name';
+    model.NO_VALUE = 'no value';
+    model.camelCase = 'camelCase';
+
+    expect(model.noName).toBe('no name');
+    expect(model.noValue).toBe('no value');
+    expect(model.camelCase).toBe('camelCase');
   });
 });
