@@ -114,11 +114,11 @@ const str = 'JSProgrammingLanguage';
 
 const camelCase = convention('camelCase');
 
-console.log(strings.map(camelCase.to)); // jsProgrammingLanguage
+console.log(camelCase.to(str)); // jsProgrammingLanguage
 
-console.log(strings.map(toSnakeCase)); // js_programming_language
+console.log(toSnakeCase(str)); // js_programming_language
 
-console.log(isSnakeCase(toSnakeCase(strings[0]))) // true
+console.log(isSnakeCase(toSnakeCase(str))) // true
 ```
 
 ## License
