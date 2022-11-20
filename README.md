@@ -54,12 +54,14 @@ const obj = {
   ],
 };
 
-type camelObj = { // type safety support
+type camelObj = {
+  // type safety support
   id: number;
   testValue: string;
   data: {
     id: number;
     testValue: string;
+    [x: string]: any;
   };
   items: [
     {
@@ -67,30 +69,37 @@ type camelObj = { // type safety support
       testValue: string;
     },
   ];
+  [x: string]: any;
 };
 
 const model = Modeler.build<camelObj>(obj, 'camelCase');
 
-console.log(model.id) // 123
-console.log(model.testValue) // test value
-console.log(model.TestValue) // test value
+// Properties starts with _ before converting
+console.log(model.id); // undefined
 
-console.log(model.data.id) // 456
-console.log(model.items[0].testValue) // 789
+// Applying convert to the _id property
+console.log(model._id); // 123
+console.log(model.id); // 123
+
+console.log(model.testValue); // test value
+console.log(model.TestValue); // test value
+
+console.log(model.data.id); // undefined
+console.log(model.items[0].testValue); // 789
 
 // Set value dynamically
 model.NO_name = 'no name';
 model.NO_VALUE = 'no value';
-model.camelCase = 'camelCase';
 
-console.log(model.noName) // no name
-console.log(model.noValue) // no value
-console.log(model.camelCase) // camelCase
+console.log(model.noName); // no name
+console.log(model.noValue); // no value
 
 /**
  * It takes an convention model and converts all properties at once
  */
 Modeler.convert(model);
+
+console.log(model.data.id); // 456
 
 console.log(model);
 `
@@ -99,9 +108,8 @@ console.log(model);
   items: [ { testValue: '789', id: 789 } ],
   id: 123,
   testValue: 'test value',
-  noName: 'Xavier',
-  noValue: 'no value',
-  camelCase: 'camelCase'
+  noName: 'no name',
+  noValue: 'no value'
 }
 `
 ```
