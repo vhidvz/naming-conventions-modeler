@@ -74,17 +74,12 @@ type camelObj = {
 
 const model = Modeler.build<camelObj>(obj, 'camelCase');
 
-// Properties starts with _ before converting
-console.log(model.id); // undefined
-
-// Applying convert to the _id property
-console.log(model._id); // 123
 console.log(model.id); // 123
 
 console.log(model.testValue); // test value
 console.log(model.TestValue); // test value
 
-console.log(model.data.id); // undefined
+console.log(model.data.id); // 456
 console.log(model.items[0].testValue); // 789
 
 // Set value dynamically
@@ -99,19 +94,15 @@ console.log(model.noValue); // no value
  */
 Modeler.convert(model);
 
-console.log(model.data.id); // 456
-
 console.log(model);
-`
-{
+`{
   data: { id: 456, testValue: '456' },
   items: [ { testValue: '789', id: 789 } ],
   id: 123,
   testValue: 'test value',
   noName: 'no name',
   noValue: 'no value'
-}
-`
+}`
 ```
 
 ### Tools

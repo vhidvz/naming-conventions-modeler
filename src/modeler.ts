@@ -34,7 +34,7 @@ const find = (
   if (target[prop]) return { key: prop, value: target[prop] };
 
   for (const c of [toSnakeCase, toCamelCase, toPascalCase, toMacroCase, toKebabCase, toNoCase]) {
-    const property = { key: c(prop), value: target[c(prop)] };
+    const property = { key: c(prop), value: target[c(prop)] ?? target['_' + c(prop)] ?? target['_' + prop] };
     if (property.value) return property;
   }
 
