@@ -17,6 +17,15 @@ export type NamingConvention =
   | 'MACRO_CASE'
   | 'no case';
 
+/**
+ * It takes a target object and a property name, and returns the property name and value of the
+ * property that matches the given property name
+ *
+ * @param target - The object to search for the property.
+ * @param {string | symbol} prop - The property name to find.
+ *
+ * @returns An object with a key and value.
+ */
 const find = (
   target: { [x: string | symbol]: any },
   prop: string | symbol,
@@ -32,6 +41,15 @@ const find = (
   return { key: '', value: undefined };
 };
 
+/**
+ * It takes an object and a naming convention, and returns a new object with the keys renamed according
+ * to the naming convention
+ *
+ * @param {any} data - any - The data to be converted.
+ * @param {NamingConvention} name - The name of the object you want to convert.
+ *
+ * @returns A function that takes two arguments, data and name.
+ */
 const nested = (data: any, name: NamingConvention): any => {
   if (typeof data === 'object') {
     if (Array.isArray(data)) return data.map((val) => nested(val, name));
@@ -39,6 +57,15 @@ const nested = (data: any, name: NamingConvention): any => {
   } else return data;
 };
 
+/**
+ * It takes an object and a naming convention and returns a new object with the same properties but
+ * with the naming convention applied
+ *
+ * @param {object} data - object - The object you want to convert.
+ * @param {NamingConvention} name - NamingConvention
+ *
+ * @returns A Proxy object
+ */
 const build = <T = any>(data: object, name: NamingConvention): T => {
   const $ = convention(name);
   return new Proxy(data, {
@@ -64,10 +91,24 @@ const build = <T = any>(data: object, name: NamingConvention): T => {
 };
 
 export class Modeler {
+  /**
+   * It takes an object and a naming convention and returns a new object with the same properties but
+   * with the naming convention applied
+   *
+   * @param {object} data - The data object that you want to convert.
+   * @param {NamingConvention} name - NamingConvention
+   *
+   * @returns The return value is the result of the nested function.
+   */
   static build<T = any>(data: object, name: NamingConvention): T {
     return nested(data, name) as T;
   }
 
+  /**
+   * It takes an convention model and converts all properties
+   *
+   * @param {object} data - The data to be converted.
+   */
   static convert(data: object) {
     JSON.stringify(data);
   }

@@ -8,11 +8,11 @@
 [![GitHub](https://img.shields.io/github/license/vhidvz/naming-conventions-modeler?style=flat)](https://vhidvz.github.io/naming-conventions-modeler/)
 [![semantic-release: angular](https://img.shields.io/badge/semantic--release-nodejs-e10079?logo=semantic-release)](https://github.com/semantic-release/semantic-release)
 [![code style: prettier](https://img.shields.io/badge/code_style-prettier-ff69b4.svg)](https://github.com/prettier/prettier)
-[![Gitter](https://badges.gitter.im/npm-naming-conventions-modeler/community.svg)](https://gitter.im/npm-naming-conventions-modeler/community?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge)
+[![Gitter](https://badges.gitter.im/naming-conventions-modeler-npm/community.svg)](https://gitter.im/naming-conventions-modeler-npm/community?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge)
 [![documentation](https://img.shields.io/badge/documentation-click_to_read-c27cf4)](https://vhidvz.github.io/naming-conventions-modeler/)
 [![Build, Test and Publish](https://github.com/vhidvz/naming-conventions-modeler/actions/workflows/npm-ci.yml/badge.svg)](https://github.com/vhidvz/naming-conventions-modeler/actions/workflows/npm-ci.yml)
 
-Simple and Fast naming conventions modeler implemented with ```Proxy```, zero dependencies.
+Simple and Fast ```TypeSafe``` naming conventions modeler implemented with ```Proxy```; zero dependency.
 
 ## Quick Start Guide
 
@@ -20,15 +20,28 @@ Simple and Fast naming conventions modeler implemented with ```Proxy```, zero de
 npm install --save naming-conventions-modeler
 ```
 
+Supported naming convention model comparison.
+
+| **Original**              | **snake_case**          | **camelCase**         | **PascalCase**        | **MACRO_CASE**          | **kebab-case**          |
+|---------------------------|-------------------------|-----------------------|-----------------------|-------------------------|-------------------------|
+| **RegExr**                | reg_exr                 | regExr                | RegExr                | REG_EXR                 | reg-exr                 |
+| **PCRE**                  | pcre                    | pcre                  | Pcre                  | PCRE                    | pcre                    |
+| **JavaScript**            | java_script             | javaScript            | JavaScript            | JAVA_SCRIPT             | java-script             |
+| **JSProgrammingLanguage** | js_programming_language | jsProgrammingLanguage | JsProgrammingLanguage | JS_PROGRAMMING_LANGUAGE | js-programming-language |
+| **OTP**                   | otp                     | otp                   | Otp                   | OTP                     | otp                     |
+| **\_\_meta\_\_**          | meta                    | meta                  | Meta                  | META                    | meta                    |
+| **camelCase**             | camel_case              | camelCase             | CamelCase             | CAMEL_CASE              | camel-case              |
+| **_id**                   | id                      | id                    | Id                    | ID                      | id                      |
+| **ID**                    | id                      | id                    | Id                    | ID                      | id                      |
+
 ### Modeler
 
 ```ts
 import { Modeler } from 'naming-conventions-modeler';
 
-
 const obj = {
   _id: 123,
-  test_value: 'test value',
+  TestValue: 'test value',
   data: {
     _id: 456,
     test_value: '456',
@@ -41,7 +54,7 @@ const obj = {
   ],
 };
 
-type camelObj = {
+type camelObj = { // type safety support
   id: number;
   testValue: string;
   data: {
@@ -63,31 +76,34 @@ console.log(model.testValue) // test value
 console.log(model.TestValue) // test value
 
 console.log(model.data.id) // 456
-console.log(model.data.testValue) // 456
-console.log(model.items[0].id) // 789
 console.log(model.items[0].testValue) // 789
 
+// Set value dynamically
+model.NO_name = 'no name';
+model.NO_VALUE = 'no value';
+model.camelCase = 'camelCase';
+
+console.log(model.noName) // no name
+console.log(model.noValue) // no value
+console.log(model.camelCase) // camelCase
+
+/**
+ * It takes an convention model and converts all properties at once
+ */
 Modeler.convert(model);
 
 console.log(model);
-`[
-  {
-    "data": {
-      "id": 456,
-      "testValue": "456"
-    },
-    "items": [
-      {
-        "id": 789,
-        "testValue": "789"
-      }
-    ],
-    "id": 123,
-    "testValue": "test value",
-    "proto": {} // TODO: this property not exist
-  }
-]`
-
+`
+{
+  data: { id: 456, testValue: '456' },
+  items: [ { testValue: '789', id: 789 } ],
+  id: 123,
+  testValue: 'test value',
+  noName: 'Xavier',
+  noValue: 'no value',
+  camelCase: 'camelCase'
+}
+`
 ```
 
 ### Tools
@@ -95,63 +111,15 @@ console.log(model);
 ```ts
 import { convention, toSnakeCase, isSnakeCase } from 'naming-conventions-modeler';
 
-const strings = [
-  'RegExr',
-  'PCRE',
-  'JavaScript',
-  'JSProgrammingLanguage',
-  'OTP',
-  '__meta__',
-  'camelCase',
-  '_id',
-  'ID',
-  'iD',
-  'id',
-  'Id',
-  '0123',
-  '_-$#@',
-];
+const str = 'JSProgrammingLanguage';
 
 const camelCase = convention('camelCase');
 
-console.log(strings.map(camelCase.to));
-`[
-  'regExr',
-  'pcre',
-  'javaScript',
-  'jsProgrammingLanguage',
-  'otp',
-  'meta',
-  'camelCase',
-  'id',
-  'id',
-  'id',
-  'id',
-  'id',
-  '0123',
-  '$#@',
-]`
+console.log(strings.map(camelCase.to)); // jsProgrammingLanguage
 
-console.log(strings.map(toSnakeCase));
-`[
-  'reg_exr',
-  'pcre',
-  'java_script',
-  'js_programming_language',
-  'otp',
-  'meta',
-  'camel_case',
-  'id',
-  'id',
-  'id',
-  'id',
-  'id',
-  '0123',
-  '$#@',
-]`
+console.log(strings.map(toSnakeCase)); // js_programming_language
 
 console.log(isSnakeCase(toSnakeCase(strings[0]))) // true
-
 ```
 
 ## License
