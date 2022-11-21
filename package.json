@@ -1,6 +1,6 @@
 {
   "name": "naming-conventions-modeler",
-  "version": "1.2.4",
+  "version": "1.2.5",
   "description": "Naming Conventions Modeler",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",

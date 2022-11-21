@@ -156,9 +156,7 @@ export function isPascalCase(str: string): boolean {
  * @returns A string with all lowercase letters and spaces replaced with underscores.
  */
 export function toMacroCase(str: string): string {
-  return toNoCase(str)
-    .replace(/[a-z]+/g, (m) => m.toUpperCase())
-    .replace(/\s+/g, '_');
+  return toNoCase(str).replace(/\s+/g, '_').toUpperCase();
 }
 
 /**
