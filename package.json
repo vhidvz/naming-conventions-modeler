@@ -1,6 +1,6 @@
 {
   "name": "naming-conventions-modeler",
-  "version": "1.2.5",
+  "version": "1.2.6",
   "description": "Naming Conventions Modeler",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
@@ -32,8 +32,8 @@
   "devDependencies": {
     "@types/jest": "^29.2.3",
     "@types/node": "^18.11.9",
-    "@typescript-eslint/eslint-plugin": "^5.43.0",
-    "@typescript-eslint/parser": "^5.43.0",
+    "@typescript-eslint/eslint-plugin": "^5.44.0",
+    "@typescript-eslint/parser": "^5.44.0",
     "dotenv": "^16.0.3",
     "eslint": "^8.28.0",
     "eslint-config-prettier": "^8.5.0",
@@ -54,8 +54,8 @@
     "registry": "https://registry.npmjs.org/"
   },
   "engines": {
-    "node": ">=18.12.1",
-    "npm": ">=8.19.2"
+    "node": ">=14.21.1",
+    "npm": ">=6.14.17"
   },
   "files": [
     "/dist"

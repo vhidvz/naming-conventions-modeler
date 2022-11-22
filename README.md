@@ -95,14 +95,16 @@ console.log(model.noValue); // no value
 Modeler.convert(model);
 
 console.log(model);
-`{
-  data: { id: 456, testValue: '456' },
-  items: [ { testValue: '789', id: 789 } ],
-  id: 123,
-  testValue: 'test value',
-  noName: 'no name',
-  noValue: 'no value'
-}`
+/**
+ * {
+ *   data: { id: 456, testValue: '456' },
+ *   items: [ { testValue: '789', id: 789 } ],
+ *   testValue: 'test value',
+ *   noName: 'no name',
+ *   noValue: 'no value',
+ *   id: 123
+ * }
+ */
 ```
 
 ### Tools
