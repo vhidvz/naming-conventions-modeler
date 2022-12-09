@@ -100,7 +100,7 @@ export class Modeler {
    *
    * @returns The return value is the result of the nested function.
    */
-  static build<T = any>(data: object, name: NamingConvention): T {
+  static build<T = any>(data: any, name: NamingConvention): T {
     return nested(data, name) as T;
   }
 
@@ -109,7 +109,7 @@ export class Modeler {
    *
    * @param {object} data - The data to be converted.
    */
-  static convert(data: object) {
+  static convert<T = any>(data: T): T {
     JSON.stringify(data);
     return data;
   }
