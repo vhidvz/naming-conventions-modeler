@@ -109,7 +109,7 @@ export class Modeler {
    *
    * @param {object} data - The data to be converted.
    */
-  static convert<T = any>(data: T): T {
+  static convert<T = any>(data: any): T {
     JSON.stringify(data);
     return data;
   }
