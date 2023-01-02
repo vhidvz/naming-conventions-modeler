@@ -22,17 +22,23 @@ npm install --save naming-conventions-modeler
 
 Supported naming convention model comparison.
 
-| **Original**              | **snake_case**          | **camelCase**         | **PascalCase**        | **MACRO_CASE**          | **kebab-case**          |
-|---------------------------|-------------------------|-----------------------|-----------------------|-------------------------|-------------------------|
-| **RegExr**                | reg_exr                 | regExr                | RegExr                | REG_EXR                 | reg-exr                 |
-| **PCRE**                  | pcre                    | pcre                  | Pcre                  | PCRE                    | pcre                    |
-| **JavaScript**            | java_script             | javaScript            | JavaScript            | JAVA_SCRIPT             | java-script             |
-| **JSProgrammingLanguage** | js_programming_language | jsProgrammingLanguage | JsProgrammingLanguage | JS_PROGRAMMING_LANGUAGE | js-programming-language |
-| **OTP**                   | otp                     | otp                   | Otp                   | OTP                     | otp                     |
-| **\_\_meta\_\_**          | meta                    | meta                  | Meta                  | META                    | meta                    |
-| **camelCase**             | camel_case              | camelCase             | CamelCase             | CAMEL_CASE              | camel-case              |
-| **_id**                   | id                      | id                    | Id                    | ID                      | id                      |
-| **ID**                    | id                      | id                    | Id                    | ID                      | id                      |
+| **Original**              | **snake_case**          | **camelCase**         | **PascalCase**        | **kebab-case**          | **MACRO_CASE**          | **Train-Case**          | **flatcase**          | **no case**             |
+|---------------------------|-------------------------|-----------------------|-----------------------|-------------------------|-------------------------|-------------------------|-----------------------|-------------------------|
+| **RegExr**                | reg_exr                 | regExr                | RegExr                | reg-exr                 | REG_EXR                 | Reg-Exr                 | regexr                | Reg Exr                 |
+| **PCRE**                  | pcre                    | pcre                  | PCRE                  | pcre                    | PCRE                    | PCRE                    | pcre                  | PCRE                    |
+| **JavaScript**            | java_script             | javaScript            | JavaScript            | java-script             | JAVA_SCRIPT             | Java-Script             | javascript            | Java Script             |
+| **JSProgrammingLanguage** | js_programming_language | jsProgrammingLanguage | JSProgrammingLanguage | js-programming-language | JS_PROGRAMMING_LANGUAGE | JS-Programming-Language | jsprogramminglanguage | JS Programming Language |
+| **OTP**                   | otp                     | otp                   | OTP                   | otp                     | OTP                     | OTP                     | otp                   | OTP                     |
+| **Train-Case**            | train_case              | trainCase             | TrainCase             | train-case              | TRAIN_CASE              | Train-Case              | traincase             | Train Case              |
+| **\_\_meta\_\_**          | meta                    | meta                  | Meta                  | meta                    | META                    | Meta                    | meta                  | meta                    |
+| **camelCase**             | camel_case              | camelCase             | CamelCase             | camel-case              | CAMEL_CASE              | Camel-Case              | camelcase             | camel Case              |
+| **_id**                   | id                      | id                    | Id                    | id                      | ID                      | Id                      | id                    | id                      |
+| **ID**                    | id                      | id                    | ID                    | id                      | ID                      | ID                      | id                    | ID                      |
+| **iD**                    | id                      | id                    | ID                    | id                      | ID                      | ID                      | id                    | iD                      |
+| **id**                    | id                      | id                    | Id                    | id                      | ID                      | Id                      | id                    | id                      |
+| **Id**                    | id                      | id                    | Id                    | id                      | ID                      | Id                      | id                    | Id                      |
+| **0123**                  | 0123                    | 0123                  | 0123                  | 0123                    | 0123                    | 0123                    | 0123                  | 0123                    |
+| **_-$#@**                 | $#@                     | $#@                   | $#@                   | $#@                     | $#@                     | $#@                     | $#@                   | $#@                     |
 
 ### Modeler
 
