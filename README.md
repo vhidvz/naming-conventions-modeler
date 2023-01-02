@@ -20,8 +20,6 @@ Simple and Fast ```TypeSafe``` naming conventions modeler implemented with ```Pr
 npm install --save naming-conventions-modeler
 ```
 
-Supported naming convention model comparison.
-
 | **Original**              | **snake_case**          | **camelCase**         | **PascalCase**        | **kebab-case**          | **MACRO_CASE**          | **Train-Case**          | **flatcase**          | **no case**             |
 |---------------------------|-------------------------|-----------------------|-----------------------|-------------------------|-------------------------|-------------------------|-----------------------|-------------------------|
 | **RegExr**                | reg_exr                 | regExr                | RegExr                | reg-exr                 | REG_EXR                 | Reg-Exr                 | regexr                | Reg Exr                 |
