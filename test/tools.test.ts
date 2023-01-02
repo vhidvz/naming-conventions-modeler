@@ -1,4 +1,4 @@
-import { convention } from '../src';
+import { NamingConvention, convention } from '../src';
 
 const strings = [
   'RegExr',
@@ -6,6 +6,7 @@ const strings = [
   'JavaScript',
   'JSProgrammingLanguage',
   'OTP',
+  'Train-Case',
   '__meta__',
   'camelCase',
   '_id',
@@ -18,6 +19,10 @@ const strings = [
 ];
 
 describe('test functions', () => {
+  it('should throw error', () => {
+    expect(() => convention('pothole_case' as NamingConvention)).toThrowError();
+  });
+
   it('should return no case', () => {
     const noCase = convention('no case');
     const result = strings.map(noCase.to);
@@ -106,8 +111,8 @@ describe('test functions', () => {
       'Meta',
       'CamelCase',
       'Id',
-      'Id',
-      'Id',
+      'ID',
+      'ID',
       'Id',
       'Id',
       '0123',

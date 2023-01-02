@@ -134,9 +134,9 @@ export function isCamelCase(str: string): boolean {
  * @returns A string with the first letter capitalized.
  */
 export function toPascalCase(str: string): string {
-  return (' ' + toNoCase(str))
-    .replace(/[^\w][a-z]+/g, (m) => m.charAt(0).toUpperCase() + m.slice(1))
-    .replace(/\s+/g, '');
+  const noCase = ' ' + toNoCase(str);
+  const replace = noCase.replace(/[^\w][a-z]/g, (m) => m.toUpperCase());
+  return replace.replace(/\s+/g, '');
 }
 
 /**
@@ -192,4 +192,48 @@ export function toKebabCase(str: string): string {
  */
 export function isKebabCase(str: string): boolean {
   return toKebabCase(str) === str;
+}
+
+/**
+ * It takes a string, converts it to flat case, and replaces all spaces with nothing
+ *
+ * @param {string} str - The string to convert.
+ *
+ * @returns A function that takes a string and returns a string.
+ */
+export function toFlatCase(str: string): string {
+  return toNoCase(str).toLowerCase().replace(/\s+/g, '');
+}
+
+/**
+ * It returns true if the input string is already in flat case
+ *
+ * @param {string} str - The string to check.
+ *
+ * @returns true
+ */
+export function isFlatCase(str: string): boolean {
+  return toFlatCase(str) === str;
+}
+
+/**
+ * It takes a string, converts it to train case
+ *
+ * @param {string} str - The string to convert.
+ *
+ * @returns A function that takes a string and returns a string.
+ */
+export function toTrainCase(str: string): string {
+  return toNoCase(str).toLowerCase().replace(/\s+/g, '');
+}
+
+/**
+ * It returns true if the input string is already in train case
+ *
+ * @param {string} str - The string to check.
+ *
+ * @returns true
+ */
+export function isTrainCase(str: string): boolean {
+  return toTrainCase(str) === str;
 }
