@@ -61,7 +61,6 @@ export function toNoCase(str: string): string {
     .replace(/[A-Z][a-z]+/g, (m) => ' ' + m)
     .replace(/[A-Z][A-Z]+/g, (m) => ' ' + m)
     .replace(/[\s-_]+/g, ' ')
-    .toLowerCase()
     .trim();
 }
 
@@ -86,7 +85,7 @@ export function isNoCase(str: string): boolean {
  * underscores.
  */
 export function toSnakeCase(str: string): string {
-  return toNoCase(str).replace(/\s+/g, '_');
+  return toNoCase(str).toLowerCase().replace(/\s+/g, '_');
 }
 
 /**
@@ -111,6 +110,7 @@ export function isSnakeCase(str: string): boolean {
  */
 export function toCamelCase(str: string): string {
   return toNoCase(str)
+    .toLowerCase()
     .replace(/[^\w][a-z]/g, (m) => m.toUpperCase())
     .replace(/\s+/g, '');
 }
@@ -134,7 +134,9 @@ export function isCamelCase(str: string): boolean {
  * @returns A string with the first letter capitalized.
  */
 export function toPascalCase(str: string): string {
-  return (' ' + toNoCase(str)).replace(/[^\w][a-z]/g, (m) => m.toUpperCase()).replace(/\s+/g, '');
+  return (' ' + toNoCase(str))
+    .replace(/[^\w][a-z]+/g, (m) => m.charAt(0).toUpperCase() + m.slice(1))
+    .replace(/\s+/g, '');
 }
 
 /**
@@ -156,7 +158,7 @@ export function isPascalCase(str: string): boolean {
  * @returns A string with all lowercase letters and spaces replaced with underscores.
  */
 export function toMacroCase(str: string): string {
-  return toNoCase(str).replace(/\s+/g, '_').toUpperCase();
+  return toNoCase(str).toLowerCase().replace(/\s+/g, '_').toUpperCase();
 }
 
 /**
@@ -178,7 +180,7 @@ export function isMacroCase(str: string): boolean {
  * @returns A function that takes a string and returns a string.
  */
 export function toKebabCase(str: string): string {
-  return toNoCase(str).replace(/\s+/g, '-');
+  return toNoCase(str).toLowerCase().replace(/\s+/g, '-');
 }
 
 /**

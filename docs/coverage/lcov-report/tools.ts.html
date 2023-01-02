@@ -23,30 +23,30 @@
         <div class='clearfix'>
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">99.48% </span>
+                <span class="strong">97.94% </span>
                 <span class="quiet">Statements</span>
-                <span class='fraction'>192/193</span>
+                <span class='fraction'>191/195</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">95.83% </span>
+                <span class="strong">95.65% </span>
                 <span class="quiet">Branches</span>
-                <span class='fraction'>23/24</span>
+                <span class='fraction'>22/23</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">100% </span>
+                <span class="strong">92.3% </span>
                 <span class="quiet">Functions</span>
-                <span class='fraction'>13/13</span>
+                <span class='fraction'>12/13</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">99.48% </span>
+                <span class="strong">97.94% </span>
                 <span class="quiet">Lines</span>
-                <span class='fraction'>192/193</span>
+                <span class='fraction'>191/195</span>
             </div>
         
             
@@ -256,7 +256,9 @@
 <a name='L191'></a><a href='#L191'>191</a>
 <a name='L192'></a><a href='#L192'>192</a>
 <a name='L193'></a><a href='#L193'>193</a>
-<a name='L194'></a><a href='#L194'>194</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">1x</span>
+<a name='L194'></a><a href='#L194'>194</a>
+<a name='L195'></a><a href='#L195'>195</a>
+<a name='L196'></a><a href='#L196'>196</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
@@ -314,14 +316,13 @@
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">292x</span>
-<span class="cline-any cline-yes">292x</span>
-<span class="cline-any cline-yes">292x</span>
-<span class="cline-any cline-yes">292x</span>
-<span class="cline-any cline-yes">292x</span>
-<span class="cline-any cline-yes">292x</span>
-<span class="cline-any cline-yes">292x</span>
-<span class="cline-any cline-yes">292x</span>
+<span class="cline-any cline-yes">278x</span>
+<span class="cline-any cline-yes">278x</span>
+<span class="cline-any cline-yes">278x</span>
+<span class="cline-any cline-yes">278x</span>
+<span class="cline-any cline-yes">278x</span>
+<span class="cline-any cline-yes">278x</span>
+<span class="cline-any cline-yes">278x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
@@ -367,6 +368,7 @@
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">77x</span>
 <span class="cline-any cline-yes">77x</span>
 <span class="cline-any cline-yes">77x</span>
 <span class="cline-any cline-yes">77x</span>
@@ -391,9 +393,11 @@
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">43x</span>
-<span class="cline-any cline-yes">43x</span>
-<span class="cline-any cline-yes">43x</span>
+<span class="cline-any cline-yes">29x</span>
+<span class="cline-any cline-yes">29x</span>
+<span class="cline-any cline-yes">29x</span>
+<span class="cline-any cline-yes">29x</span>
+<span class="cline-any cline-yes">29x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
@@ -402,9 +406,9 @@
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">14x</span>
-<span class="cline-any cline-yes">14x</span>
-<span class="cline-any cline-yes">14x</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
@@ -512,7 +516,6 @@ export function toNoCase(str: string): string {
     .replace(/[A-Z][a-z]+/g, (m) =&gt; ' ' + m)
     .replace(/[A-Z][A-Z]+/g, (m) =&gt; ' ' + m)
     .replace(/[\s-_]+/g, ' ')
-    .toLowerCase()
     .trim();
 }
 &nbsp;
@@ -537,7 +540,7 @@ export function isNoCase(str: string): boolean {
  * underscores.
  */
 export function toSnakeCase(str: string): string {
-  return toNoCase(str).replace(/\s+/g, '_');
+  return toNoCase(str).toLowerCase().replace(/\s+/g, '_');
 }
 &nbsp;
 /**
@@ -562,6 +565,7 @@ export function isSnakeCase(str: string): boolean {
  */
 export function toCamelCase(str: string): string {
   return toNoCase(str)
+    .toLowerCase()
     .replace(/[^\w][a-z]/g, (m) =&gt; m.toUpperCase())
     .replace(/\s+/g, '');
 }
@@ -585,7 +589,9 @@ export function isCamelCase(str: string): boolean {
  * @returns A string with the first letter capitalized.
  */
 export function toPascalCase(str: string): string {
-  return (' ' + toNoCase(str)).replace(/[^\w][a-z]/g, (m) =&gt; m.toUpperCase()).replace(/\s+/g, '');
+  return (' ' + toNoCase(str))
+    .replace(/[^\w][a-z]+/g, (m) =&gt; m.charAt(0).toUpperCase() + m.slice(1))
+    .replace(/\s+/g, '');
 }
 &nbsp;
 /**
@@ -595,9 +601,9 @@ export function toPascalCase(str: string): string {
  *
  * @returns A boolean value.
  */
-export function isPascalCase(str: string): boolean {
-  return toPascalCase(str) === str;
-}
+<span class="cstat-no" title="statement not covered" ><span class="fstat-no" title="function not covered" >export function isPascalCase(str: string): boolean {</span></span>
+<span class="cstat-no" title="statement not covered" >  return toPascalCase(str) === str;</span>
+<span class="cstat-no" title="statement not covered" >}</span>
 &nbsp;
 /**
  * It converts a string to a macro case string
@@ -607,7 +613,7 @@ export function isPascalCase(str: string): boolean {
  * @returns A string with all lowercase letters and spaces replaced with underscores.
  */
 export function toMacroCase(str: string): string {
-  return toNoCase(str).replace(/\s+/g, '_').toUpperCase();
+  return toNoCase(str).toLowerCase().replace(/\s+/g, '_').toUpperCase();
 }
 &nbsp;
 /**
@@ -629,7 +635,7 @@ export function isMacroCase(str: string): boolean {
  * @returns A function that takes a string and returns a string.
  */
 export function toKebabCase(str: string): string {
-  return toNoCase(str).replace(/\s+/g, '-');
+  return toNoCase(str).toLowerCase().replace(/\s+/g, '-');
 }
 &nbsp;
 /**
@@ -649,7 +655,7 @@ export function isKebabCase(str: string): boolean {
             <div class='footer quiet pad2 space-top1 center small'>
                 Code coverage generated by
                 <a href="https://istanbul.js.org/" target="_blank" rel="noopener noreferrer">istanbul</a>
-                at 2022-12-09T20:23:30.885Z
+                at 2023-01-02T07:09:52.496Z
             </div>
         <script src="prettify.js"></script>
         <script>

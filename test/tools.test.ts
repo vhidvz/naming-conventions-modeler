@@ -17,24 +17,24 @@ const strings = [
   '_-$#@',
 ];
 
-describe('test hello function', () => {
+describe('test functions', () => {
   it('should return no case', () => {
     const noCase = convention('no case');
     const result = strings.map(noCase.to);
 
     expect(result).toEqual([
-      'reg exr',
-      'pcre',
-      'java script',
-      'js programming language',
-      'otp',
+      'Reg Exr',
+      'PCRE',
+      'Java Script',
+      'JS Programming Language',
+      'OTP',
       'meta',
-      'camel case',
+      'camel Case',
       'id',
+      'ID',
+      'iD',
       'id',
-      'id',
-      'id',
-      'id',
+      'Id',
       '0123',
       '$#@',
     ]);
@@ -99,10 +99,10 @@ describe('test hello function', () => {
 
     expect(result).toEqual([
       'RegExr',
-      'Pcre',
+      'PCRE',
       'JavaScript',
-      'JsProgrammingLanguage',
-      'Otp',
+      'JSProgrammingLanguage',
+      'OTP',
       'Meta',
       'CamelCase',
       'Id',
