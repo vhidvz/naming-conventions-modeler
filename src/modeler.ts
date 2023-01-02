@@ -15,6 +15,8 @@ export type NamingConvention =
   | 'PascalCase'
   | 'kebab-case'
   | 'MACRO_CASE'
+  | 'Train-Case'
+  | 'flatcase'
   | 'no case';
 
 /**

@@ -33,6 +33,7 @@ describe('test functions', () => {
       'Java Script',
       'JS Programming Language',
       'OTP',
+      'Train Case',
       'meta',
       'camel Case',
       'id',
@@ -58,6 +59,7 @@ describe('test functions', () => {
       'java_script',
       'js_programming_language',
       'otp',
+      'train_case',
       'meta',
       'camel_case',
       'id',
@@ -83,6 +85,7 @@ describe('test functions', () => {
       'javaScript',
       'jsProgrammingLanguage',
       'otp',
+      'trainCase',
       'meta',
       'camelCase',
       'id',
@@ -108,6 +111,7 @@ describe('test functions', () => {
       'JavaScript',
       'JSProgrammingLanguage',
       'OTP',
+      'TrainCase',
       'Meta',
       'CamelCase',
       'Id',
@@ -133,6 +137,7 @@ describe('test functions', () => {
       'java-script',
       'js-programming-language',
       'otp',
+      'train-case',
       'meta',
       'camel-case',
       'id',
@@ -158,6 +163,7 @@ describe('test functions', () => {
       'JAVA_SCRIPT',
       'JS_PROGRAMMING_LANGUAGE',
       'OTP',
+      'TRAIN_CASE',
       'META',
       'CAMEL_CASE',
       'ID',
@@ -170,6 +176,58 @@ describe('test functions', () => {
     ]);
 
     const check = result.map(macroCase.is).every((i) => i === true);
+    expect(check).toBeTruthy();
+  });
+
+  it('should return Train-Case', () => {
+    const trainCase = convention('Train-Case');
+    const result = strings.map(trainCase.to);
+
+    expect(result).toEqual([
+      'Reg-Exr',
+      'PCRE',
+      'Java-Script',
+      'JS-Programming-Language',
+      'OTP',
+      'Train-Case',
+      'Meta',
+      'Camel-Case',
+      'Id',
+      'ID',
+      'ID',
+      'Id',
+      'Id',
+      '0123',
+      '$#@',
+    ]);
+
+    const check = result.map(trainCase.is).every((i) => i === true);
+    expect(check).toBeTruthy();
+  });
+
+  it('should return flatcase', () => {
+    const flatCase = convention('flatcase');
+    const result = strings.map(flatCase.to);
+
+    expect(result).toEqual([
+      'regexr',
+      'pcre',
+      'javascript',
+      'jsprogramminglanguage',
+      'otp',
+      'traincase',
+      'meta',
+      'camelcase',
+      'id',
+      'id',
+      'id',
+      'id',
+      'id',
+      '0123',
+      '$#@',
+    ]);
+
+    const check = result.map(flatCase.is).every((i) => i === true);
     expect(check).toBeTruthy();
   });
 });
