@@ -53,7 +53,7 @@ const find = (
  * @returns A function that takes two arguments, data and name.
  */
 const nested = (data: any, name: NamingConvention): any => {
-  if (typeof data === 'object') {
+  if (data && typeof data === 'object') {
     if (Array.isArray(data)) return data.map((val) => nested(val, name));
     else return build(data as object, name);
   } else return data;
