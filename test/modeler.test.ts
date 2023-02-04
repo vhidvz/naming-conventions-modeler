@@ -61,4 +61,10 @@ describe('test hello function', () => {
     expect(model.noValue).toBe('no value');
     expect(model.camelCase).toBe('camelCase');
   });
+
+  it('should skip null as args and return null', () => {
+    const model = Modeler.build(null, 'camelCase');
+
+    expect(model).toBeNull();
+  });
 });
