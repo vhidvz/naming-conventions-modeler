@@ -1,16 +1,25 @@
 import { NamingConvention } from './modeler';
 
 /**
+ * `Convention` is an object with a `to` function that takes a string and returns a string, and an `is`
+ * function that takes a string and returns a boolean.
+ *
+ * @property to - A function that takes a string and returns a string.
+ * @property is - A function that takes a string and returns a boolean.
+ */
+export type Convention = {
+  to: (str: string) => string;
+  is: (str: string) => boolean;
+};
+
+/**
  * It takes a naming convention and returns an object with two functions: `to` and `is`
  *
  * @param {NamingConvention} name - NamingConvention
  *
  * @returns An object with two properties: to and is.
  */
-export function convention(name: NamingConvention): {
-  to: (str: string) => string;
-  is: (str: string) => boolean;
-} {
+export function convention(name: NamingConvention): Convention {
   let to: (str: string) => string;
   let is: (str: string) => boolean;
 
