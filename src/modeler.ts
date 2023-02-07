@@ -7,6 +7,8 @@ import {
   toNoCase,
   toPascalCase,
   toSnakeCase,
+  toFlatCase,
+  toTrainCase,
 } from './tools';
 
 export type NamingConvention =
@@ -35,7 +37,16 @@ const find = (
   if (typeof prop === 'symbol') return { key: prop, value: target[prop] };
   if (prop in target || '_' + prop in target) return { key: prop, value: target[prop] ?? target['_' + prop] };
 
-  for (const c of [toSnakeCase, toCamelCase, toPascalCase, toMacroCase, toKebabCase, toNoCase]) {
+  for (const c of [
+    toSnakeCase,
+    toCamelCase,
+    toPascalCase,
+    toMacroCase,
+    toKebabCase,
+    toFlatCase,
+    toTrainCase,
+    toNoCase,
+  ]) {
     const property = { key: c(prop), value: target[c(prop)] ?? target['_' + c(prop)] };
     if (property.value) return property;
   }
