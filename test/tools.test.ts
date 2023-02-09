@@ -1,4 +1,4 @@
-import { NamingConvention, convention } from '../src';
+import { NamingConvention, convention, lookup } from '../src';
 
 const strings = [
   'RegExr',
@@ -17,6 +17,11 @@ const strings = [
   '0123',
   '_-$#@',
 ];
+
+const obj = {
+  PCsdRE: 'Train-Case',
+  __metad__: 'camelCase',
+};
 
 describe('test functions', () => {
   it('should throw error', () => {
@@ -229,5 +234,16 @@ describe('test functions', () => {
 
     const check = result.map(flatCase.is).every((i) => i === true);
     expect(check).toBeTruthy();
+  });
+
+  it('should return lookup', () => {
+    const result = lookup(obj, { 'PC.*RE': 'PCRE', __metad__: '__meta__' });
+
+    expect(result).toStrictEqual(
+      expect.objectContaining({
+        PCRE: 'Train-Case',
+        __meta__: 'camelCase',
+      }),
+    );
   });
 });
