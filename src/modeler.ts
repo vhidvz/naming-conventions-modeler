@@ -65,7 +65,7 @@ const find = (
  * @returns A function that takes two arguments, data and $, and returns a nested object.
  */
 const nested = (data: any, $: Convention): any => {
-  if (typeof data === 'object') {
+  if (!!data && typeof data === 'object') {
     if (Array.isArray(data)) return data.map((val) => nested(val, $));
     else return build(data as object, $);
   } else return data;
