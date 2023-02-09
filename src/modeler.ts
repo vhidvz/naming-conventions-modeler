@@ -114,7 +114,11 @@ const build = <T = any>(data: object, $: Convention): T => {
  */
 export const lookup = <T = any>(data: any, table: { [x: string]: string }): T => {
   let str = JSON.stringify(data);
-  for (const [key, val] of Object.entries(table)) str = str.replace(new RegExp(key, 'g'), val);
+
+  for (const key in table) {
+    str = str.replace(new RegExp(`"${key}":`, 'g'), `"${table[key]}":`);
+  }
+
   return JSON.parse(str) as T;
 };
 
