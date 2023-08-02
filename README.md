@@ -2,11 +2,8 @@
 
 [![npm](https://img.shields.io/npm/v/naming-conventions-modeler)](https://www.npmjs.com/package/naming-conventions-modeler)
 [![Coverage](https://raw.githubusercontent.com/vhidvz/naming-conventions-modeler/master/coverage-badge.svg)](https://htmlpreview.github.io/?https://github.com/vhidvz/naming-conventions-modeler/blob/master/docs/coverage/lcov-report/index.html)
-![Snyk Vulnerabilities for GitHub Repo](https://img.shields.io/snyk/vulnerabilities/github/vhidvz/naming-conventions-modeler)
 ![npm](https://img.shields.io/npm/dm/naming-conventions-modeler)
 [![GitHub](https://img.shields.io/github/license/vhidvz/naming-conventions-modeler?style=flat)](https://vhidvz.github.io/naming-conventions-modeler/)
-[![semantic-release: angular](https://img.shields.io/badge/semantic--release-nodejs-e10079?logo=semantic-release)](https://github.com/semantic-release/semantic-release)
-[![code style: prettier](https://img.shields.io/badge/code_style-prettier-ff69b4.svg)](https://github.com/prettier/prettier)
 [![Gitter](https://badges.gitter.im/naming-conventions-modeler-npm/community.svg)](https://gitter.im/naming-conventions-modeler-npm/community?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge)
 [![documentation](https://img.shields.io/badge/documentation-click_to_read-c27cf4)](https://vhidvz.github.io/naming-conventions-modeler/)
 [![Build, Test and Publish](https://github.com/vhidvz/naming-conventions-modeler/actions/workflows/npm-ci.yml/badge.svg)](https://github.com/vhidvz/naming-conventions-modeler/actions/workflows/npm-ci.yml)
