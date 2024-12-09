@@ -2,6 +2,7 @@ import { Modeler } from '../src';
 
 const obj = {
   _id: 123,
+  ResultCode: 0,
   test_value: 'test value',
   data: {
     _id: 456,
@@ -17,6 +18,7 @@ const obj = {
 
 type camelObj = {
   id: number;
+  resultCode: number;
   testValue: string;
   data: {
     id: number;
@@ -37,6 +39,7 @@ describe('test hello function', () => {
     Modeler.convert(model); // is not necessary
 
     expect(model.id).toBe(123);
+    expect(model.resultCode).toBe(0);
     expect(model.testValue).toBe('test value');
 
     expect(model.data.id).toBe(456);

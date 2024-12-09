@@ -31,28 +31,16 @@ export type NamingConvention =
  *
  * @returns An object with a key and value.
  */
-const find = (
-  target: { [x: string | symbol]: any },
-  prop: string | symbol,
-): { key: string | symbol; value: any | undefined } => {
+const find = (target: { [x: string | symbol]: any }, prop: string | symbol): { key: string | symbol; value: any | undefined } => {
   if (typeof prop === 'symbol') return { key: prop, value: target[prop] };
   if (prop in target || '_' + prop in target) return { key: prop, value: target[prop] ?? target['_' + prop] };
 
-  for (const c of [
-    toSnakeCase,
-    toCamelCase,
-    toPascalCase,
-    toMacroCase,
-    toKebabCase,
-    toFlatCase,
-    toTrainCase,
-    toNoCase,
-  ]) {
+  for (const c of [toSnakeCase, toCamelCase, toPascalCase, toMacroCase, toKebabCase, toFlatCase, toTrainCase, toNoCase]) {
     const property = { key: c(prop), value: target[c(prop)] ?? target['_' + c(prop)] };
-    if (property.value) return property;
+    if (typeof property.value !== 'undefined') return property;
   }
 
-  return { key: '', value: undefined };
+  return { key: prop, value: undefined };
 };
 
 /**
@@ -87,18 +75,20 @@ const build = <T = any>(data: object, $: Convention): T => {
       else obj[$.to(prop)] = value;
       return true;
     },
-    // eslint-disable-next-line @typescript-eslint/no-unused-vars
-    get(target: { [x: string | symbol]: any }, prop: string | symbol, receiver: any) {
-      const { key, value } = find(target, prop);
+    get(target: { [x: string | symbol]: any }, prop: string | symbol) {
+      if (typeof target[prop] === 'function') return target[prop];
+      else {
+        const { key, value } = find(target, prop);
 
-      if (typeof key === 'string' && value && !$.is(key)) {
-        delete target[key];
-        target[$.to(key)] = value;
+        if (typeof key === 'string' && !$.is(key)) {
+          delete target[key];
+          if (typeof value !== 'undefined') target[$.to(key)] = value;
+        }
+
+        if (typeof value === 'object') {
+          return nested(value, $);
+        } else return value;
       }
-
-      if (typeof value === 'object') {
-        return nested(value, $);
-      } else return value;
     },
   }) as T;
 };

@@ -3,6 +3,7 @@ import { NamingConvention, convention, lookup } from '../src';
 const strings = [
   'RegExr',
   'PCRE',
+  'ResultCode',
   'JavaScript',
   'JSProgrammingLanguage',
   'OTP',
@@ -35,6 +36,7 @@ describe('test functions', () => {
     expect(result).toEqual([
       'Reg Exr',
       'PCRE',
+      'Result Code',
       'Java Script',
       'JS Programming Language',
       'OTP',
@@ -61,6 +63,7 @@ describe('test functions', () => {
     expect(result).toEqual([
       'reg_exr',
       'pcre',
+      'result_code',
       'java_script',
       'js_programming_language',
       'otp',
@@ -87,6 +90,7 @@ describe('test functions', () => {
     expect(result).toEqual([
       'regExr',
       'pcre',
+      'resultCode',
       'javaScript',
       'jsProgrammingLanguage',
       'otp',
@@ -113,6 +117,7 @@ describe('test functions', () => {
     expect(result).toEqual([
       'RegExr',
       'PCRE',
+      'ResultCode',
       'JavaScript',
       'JSProgrammingLanguage',
       'OTP',
@@ -139,6 +144,7 @@ describe('test functions', () => {
     expect(result).toEqual([
       'reg-exr',
       'pcre',
+      'result-code',
       'java-script',
       'js-programming-language',
       'otp',
@@ -165,6 +171,7 @@ describe('test functions', () => {
     expect(result).toEqual([
       'REG_EXR',
       'PCRE',
+      'RESULT_CODE',
       'JAVA_SCRIPT',
       'JS_PROGRAMMING_LANGUAGE',
       'OTP',
@@ -191,6 +198,7 @@ describe('test functions', () => {
     expect(result).toEqual([
       'Reg-Exr',
       'PCRE',
+      'Result-Code',
       'Java-Script',
       'JS-Programming-Language',
       'OTP',
@@ -217,6 +225,7 @@ describe('test functions', () => {
     expect(result).toEqual([
       'regexr',
       'pcre',
+      'resultcode',
       'javascript',
       'jsprogramminglanguage',
       'otp',
